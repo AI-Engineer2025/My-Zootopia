@@ -21,12 +21,13 @@ animals_data = load_data('animals_data.json')
 output = ""  # define an empty string
 for animal in animals_data:
     # append information to each string
-    output += f"Name: {animal['name']}\n"
-    output += f"Diet: {animal['characteristics']['diet']}\n"
-    output += f"Location: {animal["locations"][0]}\n"
-    output += f"Type: {animal["taxonomy"]["class"]}\n"
-
-#print(output)
+    output += '<li class="cards__item"><br/>\n'
+    output += f"Name: {animal['name']}<br/>\n"
+    output += f"Diet: {animal['characteristics']['diet']}<br/>\n"
+    output += f"Location: {animal["locations"][0]}<br/>\n"
+    output += f"Type: {animal["taxonomy"]["class"]}<br/>\n"
+    output += "</li>"
+print(output)
 
 with open("animals_template.html", "r", encoding="utf-8") as datei:
     inhalt = datei.read()
@@ -36,4 +37,4 @@ inhalt = inhalt.replace("__REPLACE_ANIMALS_INFO__", output)
 with open("animals.html", "w", encoding="utf-8") as datei:
     datei.write(inhalt)
 
-print(inhalt)
+#print(inhalt)
